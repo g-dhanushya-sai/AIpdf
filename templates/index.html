@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AIpdf — Chat with PDFs</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="topbar">
+        <h1>AIpdf</h1>
+        <div class="muted">Upload PDFs → Index → Ask Gemini</div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <h3>Upload PDFs</h3>
+            <div class="upload-area">
+              <form id="uploadForm">
+                <input type="file" id="files" name="files" accept="application/pdf" multiple />
+                <div class="controls">
+                  <button id="uploadBtn" type="submit">Upload & Index</button>
+                  <button id="clearBtn" type="button" class="clear-btn">Clear Index</button>
+                </div>
+              </form>
+              <div class="files-list" id="filesList">Loading...</div>
+              <div class="muted">Index status: <span id="vsStatus">...</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>About</h3>
+            <p class="muted">Uploaded PDFs are stored in `data/` and indexed into a FAISS vectorstore. Responses use Google Vertex AI (Gemini) when credentials are configured.</p>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card">
+            <h3>Chat</h3>
+            <div id="chatWindow" class="chat-window"></div>
+            <form id="chatForm">
+              <textarea id="question" placeholder="Ask about the uploaded PDFs..."></textarea>
+              <div class="controls"><button type="submit">Ask</button></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
